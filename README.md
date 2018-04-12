@@ -1,8 +1,5 @@
 # CS445-Term-Project Proposal
 
-Project Proposal
-CS445 - Spring 2018
-
 Team Members:  Evan Salzman, Rodolfo Figueroa
 
 # Project Description:  
