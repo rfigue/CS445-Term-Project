@@ -1,5 +1,6 @@
 # Link to page discussing stock forecasting:
 https://elitedatascience.com/machine-learning-projects-for-beginners#stock-prices 
+https://towardsdatascience.com/learn-how-recurrent-neural-networks-work-84e975feaaf7
 
 # Potential data sources:
 * Tutorials
