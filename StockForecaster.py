@@ -22,3 +22,8 @@ apple = pd.read_csv(fName, delimiter=',', engine = 'python')
 fName = 'NKE.csv?api_key=q74Toz9W7ovpxJh3Vybd'
 nike = pd.read_csv(fName, delimiter=',', engine = 'python')
 
+!wget https://www.quandl.com/api/v3/datasets/EOD/MSFT.csv?api_key=xzVEv6Le8ghyfmj4XXHv
+#Microsoft
+fName = 'MSFT.csv?api_key=xzVEv6Le8ghyfmj4XXHv'
+micro = pd.read_csv(fName, delimiter=',', engine = 'python')
+
