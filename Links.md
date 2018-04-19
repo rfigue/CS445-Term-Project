@@ -2,6 +2,9 @@
 https://elitedatascience.com/machine-learning-projects-for-beginners#stock-prices 
 https://towardsdatascience.com/learn-how-recurrent-neural-networks-work-84e975feaaf7
 
+#CSV DATASET
+https://www.quandl.com/api/v3/datatables/WIKI/PRICES.csv?api_key=xzVEv6Le8ghyfmj4XXHv
+
 # Potential data sources:
 * Tutorials
 
