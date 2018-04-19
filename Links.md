@@ -4,6 +4,9 @@ https://elitedatascience.com/machine-learning-projects-for-beginners#stock-price
 #CSV DATASET
 https://www.quandl.com/api/v3/datatables/WIKI/PRICES.csv?api_key=xzVEv6Le8ghyfmj4XXHv
 
+Apple DataSet
+https://www.quandl.com/api/v3/datasets/EOD/AAPL.csv?api_key=xzVEv6Le8ghyfmj4XXHv
+
 # Potential data sources:
 * Tutorials
 
