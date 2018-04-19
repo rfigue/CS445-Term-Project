@@ -1,6 +1,9 @@
 # Link to page discussing stock forecasting:
 https://elitedatascience.com/machine-learning-projects-for-beginners#stock-prices 
 
+#CSV DATASET
+https://www.quandl.com/api/v3/datatables/WIKI/PRICES.csv?api_key=xzVEv6Le8ghyfmj4XXHv
+
 # Potential data sources:
 * Tutorials
 
