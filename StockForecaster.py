@@ -27,3 +27,7 @@ nike = pd.read_csv(fName, delimiter=',', engine = 'python')
 fName = 'MSFT.csv?api_key=xzVEv6Le8ghyfmj4XXHv'
 micro = pd.read_csv(fName, delimiter=',', engine = 'python')
 
+!wget https://www.quandl.com/api/v3/datasets/EOD/INTC.csv?api_key=xzVEv6Le8ghyfmj4XXHv
+#Intel
+fName = 'INTC.csv?api_key=xzVEv6Le8ghyfmj4XXHv'
+intel = pd.read_csv(fName, delimiter=',', engine = 'python')
