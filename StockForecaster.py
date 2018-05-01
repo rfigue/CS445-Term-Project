@@ -4,18 +4,30 @@ import mlutilities as ml
 
 !wget https://www.quandl.com/api/v3/datasets/EOD/DIS.csv?api_key=q74Toz9W7ovpxJh3Vybd
 #Disney stock
-fName = 'DIS.csv?api_key=q74Toz9W7ovpxJh3Vybd'
-disney = pd.read_csv(fName, delimiter=',', engine = 'python')
+disney = 'DIS.csv?api_key=q74Toz9W7ovpxJh3Vybd'
+DIS = pd.read_csv(disney, delimiter=',', engine = 'python')
+DISX = pd.read_csv(disney, delimiter=',', skiprows = 1, usecols=(8, 9, 10), engine = 'python')
+DIST = pd.read_csv(disney, delimiter=',', skiprows = 1, usecols=(11,), engine = 'python')
+DISX = np.array(DISX)
+DIST = (np.array(DIST)).reshape(DIST.shape[0],-1)
 
 !wget https://www.quandl.com/api/v3/datasets/EOD/HD.csv?api_key=q74Toz9W7ovpxJh3Vybd
 #Home Depot
-fName = 'HD.csv?api_key=q74Toz9W7ovpxJh3Vybd'
-depot = pd.read_csv(fName, delimiter=',', engine = 'python')
+depot = 'HD.csv?api_key=q74Toz9W7ovpxJh3Vybd'
+DEP = pd.read_csv(depot, delimiter=',', engine = 'python')
+DEPX = pd.read_csv(depot, delimiter=',', skiprows = 1, usecols=(8, 9, 10), engine = 'python')
+DEPT = pd.read_csv(depot, delimiter=',', skiprows = 1, usecols=(11,), engine = 'python')
+DEPX = np.array(DEPX)
+DEPT = (np.array(DEPT)).reshape(DEPT.shape[0],-1)
 
 !wget https://www.quandl.com/api/v3/datasets/EOD/AAPL.csv?api_key=xzVEv6Le8ghyfmj4XXHv
 #Apple
-fName = 'AAPL.csv?api_key=xzVEv6Le8ghyfmj4XXHv'
-apple = pd.read_csv(fName, delimiter=',', engine = 'python')
+apple = 'AAPL.csv?api_key=xzVEv6Le8ghyfmj4XXHv'
+APP = pd.read_csv(apple, delimiter=',', engine = 'python')
+APPX = pd.read_csv(apple, delimiter=',', skiprows = 1, usecols=(8, 9, 10), engine = 'python')
+APPT = pd.read_csv(apple, delimiter=',', skiprows = 1, usecols=(11,), engine = 'python')
+APPX = np.array(DEPX)
+APPT = (np.array(APPT)).reshape(APPT.shape[0],-1)
 
 !wget https://www.quandl.com/api/v3/datasets/EOD/NKE.csv?api_key=q74Toz9W7ovpxJh3Vybd
 #Nike
