@@ -31,15 +31,28 @@ APPT = (np.array(APPT)).reshape(APPT.shape[0],-1)
 
 !wget https://www.quandl.com/api/v3/datasets/EOD/NKE.csv?api_key=q74Toz9W7ovpxJh3Vybd
 #Nike
-fName = 'NKE.csv?api_key=q74Toz9W7ovpxJh3Vybd'
-nike = pd.read_csv(fName, delimiter=',', engine = 'python')
+nike = 'NKE.csv?api_key=q74Toz9W7ovpxJh3Vybd'
+NIK = pd.read_csv(nike, delimiter=',', engine = 'python')
+NIKX = pd.read_csv(nike, delimiter=',', skiprows = 1, usecols=(8, 9, 10), engine = 'python')
+NIKT = pd.read_csv(nike, delimiter=',', skiprows = 1, usecols=(11,), engine = 'python')
+NIKX = np.array(NIKX)
+NIKT = (np.array(NIKT)).reshape(NIKT.shape[0],-1)
 
 !wget https://www.quandl.com/api/v3/datasets/EOD/MSFT.csv?api_key=xzVEv6Le8ghyfmj4XXHv
 #Microsoft
-fName = 'MSFT.csv?api_key=xzVEv6Le8ghyfmj4XXHv'
-micro = pd.read_csv(fName, delimiter=',', engine = 'python')
+micro = 'MSFT.csv?api_key=xzVEv6Le8ghyfmj4XXHv'
+MIC = pd.read_csv(micro, delimiter=',', engine = 'python')
+MICX = pd.read_csv(micro, delimiter=',', skiprows = 1, usecols=(8, 9, 10), engine = 'python')
+MICT = pd.read_csv(micro, delimiter=',', skiprows = 1, usecols=(11,), engine = 'python')
+MICX = np.array(MICX)
+MICT = (np.array(MICT)).reshape(MICT.shape[0],-1)
 
 !wget https://www.quandl.com/api/v3/datasets/EOD/INTC.csv?api_key=xzVEv6Le8ghyfmj4XXHv
 #Intel
-fName = 'INTC.csv?api_key=xzVEv6Le8ghyfmj4XXHv'
-intel = pd.read_csv(fName, delimiter=',', engine = 'python')
+intel = 'INTC.csv?api_key=xzVEv6Le8ghyfmj4XXHv'
+INT = pd.read_csv(intel, delimiter=',', engine = 'python')
+INTX = pd.read_csv(intel, delimiter=',', skiprows = 1, usecols=(8, 9, 10), engine = 'python')
+INTT = pd.read_csv(intel, delimiter=',', skiprows = 1, usecols=(11,), engine = 'python')
+INTX = np.array(INTX)
+INTT = (np.array(INTT)).reshape(INTT.shape[0],-1)
+
