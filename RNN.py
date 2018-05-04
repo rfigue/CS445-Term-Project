@@ -1,5 +1,4 @@
 import time
-import warnings
 import numpy as np
 from numpy import newaxis
 from keras.layers.core import Dense, Activation, Dropout
@@ -8,75 +7,61 @@ from keras.models import Sequential
 import matplotlib.pyplot as plt
 
 
-warnings.filterwarnings("ignore")
-
-def plot_results_multiple(predicted_data, true_data, prediction_len):
+def plotResults(predicted, actual, length):
     fig = plt.figure(facecolor='white')
-    ax = fig.add_subplot(111)
-    ax.plot(true_data, label='True Data')
-    print 'yo'
-    #Pad the list of predictions to shift it in the graph to it's correct start
-    for i, data in enumerate(predicted_data):
-        padding = [None for p in xrange(i * prediction_len)]
+    fig2 = fig.add_subplot(111)
+    fig2.plot(actual, label='Actual')
+    print('T0')
+
+    for i, data in enumerate(predicted):
+        padding = [None for p in xrange(i * length)]
         plt.plot(padding + data, label='Prediction')
         plt.legend()
     plt.show()
 
-def normalize(windows):
-    norm = []
-    for i in windows:
-        norm = [((float(p) / float(i[0])) - 1) for p in i]
-        norm.append(norm)
-    return norm
+def normalize(nWindows):
+    n = []
+    for i in nWindows:
+        n = [((float(p) / float(i[0])) - 1) for p in i]
+        n.append(n)
+    return n
 
-def build_model(layers):
+def model(layers):
     model = Sequential()
-
-    model.add(LSTM(
-        input_dim=layers[0],
-        output_dim=layers[1],
-        return_sequences=True))
+    model.add(LSTM(input_dim=layers[0], output_dim=layers[1], return_sequences=True))
+    model.add(Dropout(0.2))
+    model.add(LSTM(layers[2], return_sequences=False))
     model.add(Dropout(0.2))
 
-    model.add(LSTM(
-        layers[2],
-        return_sequences=False))
-    model.add(Dropout(0.2))
-
-    model.add(Dense(
-        output_dim=layers[3]))
+    model.add(Dense(output_dim=layers[3]))
     model.add(Activation("linear"))
 
     start = time.time()
     model.compile(loss="mse", optimizer="rmsprop")
-    print "Compilation Time : ", time.time() - start
+    print("Compilation Time : ", time.time() - start)
     return model
 
-def predict_point_by_point(model, data):
-    #Predict each timestep given the last sequence of true data, in effect only predicting 1 step ahead each time
+def onePointPrediction(model, data):
     predicted = model.predict(data)
-    predicted = np.reshape(predicted, (predicted.size,))
-    return predicted
+    return np.reshape(predicted, (predicted.size,))
 
-def predict_sequence_full(model, data, window_size):
-    #Shift the window by 1 new prediction each time, re-run predictions on new window
-    curr_frame = data[0]
+def newPointPrediction(model, data, window):
+    current = data[0]
     predicted = []
     for i in xrange(len(data)):
-        predicted.append(model.predict(curr_frame[newaxis,:,:])[0,0])
-        curr_frame = curr_frame[1:]
-        curr_frame = np.insert(curr_frame, [window_size-1], predicted[-1], axis=0)
+        predicted.append(model.predict(current[newaxis,:,:])[0,0])
+        current = current[1:]
+        current = np.insert(current, [window-1], predicted[-1], axis=0)
     return predicted
 
-def predict_sequences_multiple(model, data, window_size, prediction_len):
-    #Predict sequence of 50 steps before shifting prediction run forward by 50 steps
-    prediction_seqs = []
-    for i in xrange(len(data)/prediction_len):
-        curr_frame = data[i*prediction_len]
-        predicted = []
-        for j in xrange(prediction_len):
-            predicted.append(model.predict(curr_frame[newaxis,:,:])[0,0])
-            curr_frame = curr_frame[1:]
-            curr_frame = np.insert(curr_frame, [window_size-1], predicted[-1], axis=0)
-        prediction_seqs.append(predicted)
-    return prediction_seqs
+def multiPointPredictions(model, data, window, length):
+    predicted = []
+    for i in xrange(len(data)/length):
+        current = data[i*length]
+        pred = []
+        for item in xrange(length):
+            pred.append(model.predict(current[newaxis,:,:])[0,0])
+            current = current[1:]
+            current = np.insert(current, [window-1], pred[-1], axis=0)
+        predicted.append(pred)
+    return predicted
