@@ -22,12 +22,12 @@ def plot_results_multiple(predicted_data, true_data, prediction_len):
         plt.legend()
     plt.show()
 
-def normalise_windows(window_data):
-    normalised_data = []
-    for window in window_data:
-        normalised_window = [((float(p) / float(window[0])) - 1) for p in window]
-        normalised_data.append(normalised_window)
-    return normalised_data
+def normalize(windows):
+    norm = []
+    for i in windows:
+        norm = [((float(p) / float(i[0])) - 1) for p in i]
+        norm.append(norm)
+    return norm
 
 def build_model(layers):
     model = Sequential()
