@@ -43,7 +43,7 @@ def model(layers):
     print("Compilation Time : ", time.time() - start)
     return model
 
-def onePoint(model, data):
+def firstPoint(model, data):
     resPredictions = model.predict(data)
     return np.reshape(resPredictions, (resPredictions.size,))
 
